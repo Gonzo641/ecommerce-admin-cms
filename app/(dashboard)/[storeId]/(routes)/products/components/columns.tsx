@@ -20,31 +20,32 @@ export type ProductColumn = {
 export const columns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Nom",
   },
   {
     accessorKey: "isArchived",
-    header: "Archived",
+    header: "Archivé",
   },
   {
     accessorKey: "isFeatured",
-    header: "Featured",
+    header: "En vedette",
   },
   {
     accessorKey: "price",
-    header: "Price",
+    header: "Prix",
   },
   {
     accessorKey: "category",
-    header: "Category",
+    header: "Catégorie",
   },
   {
     accessorKey: "size",
-    header: "Size",
+    header: "Taille",
   },
   {
     accessorKey: "color",
-    header: "Color",
+    header: "Couleur",
+    
     cell: ({ row }) => (
       <div className="flex items-center gap-x-2">
         {row.original.color}

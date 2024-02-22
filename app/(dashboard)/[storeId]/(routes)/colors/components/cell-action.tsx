@@ -34,7 +34,7 @@ export const CellAction: React.FC<CellActionProps> = ({
 
     const onCopy = (id: string) => {
         navigator.clipboard.writeText(id);
-        toast.success("Color Id copied to the clipboard.");
+        toast.success("Identifiant de la couleur copié dans le presse-papiers.");
     };
 
     const onDelete = async () => {
@@ -42,9 +42,9 @@ export const CellAction: React.FC<CellActionProps> = ({
             setLoading(true);
             await axios.delete(`/api/${params.storeId}/colors/${data.id}`);
             router.refresh();
-            toast.success("Color deleted.")
+            toast.success("Couleur supprimée")
         } catch (error) {
-            toast.error("Make sure you removed all products using this color first.")
+            toast.error("Assurez-vous d'abord d'avoir supprimé toutes les catégories utilisant ce panneau d'affichage.")
         } finally {
             setLoading(false);
             setOpen(false);
@@ -62,7 +62,7 @@ export const CellAction: React.FC<CellActionProps> = ({
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="h-8 w-8 p-0">
-                        <span className="sr-only">Open menu</span>
+                        <span className="sr-only">Ouvrir menu</span>
                         <MoreHorizontal className="h-4 w-4" />
                     </Button>
                 </DropdownMenuTrigger>
@@ -72,15 +72,15 @@ export const CellAction: React.FC<CellActionProps> = ({
                     </DropdownMenuLabel>
                     <DropdownMenuItem onClick={() => onCopy(data.id)}>
                         <Copy className="mr-2 h-4 w-4" />
-                        Copy Id
+                        Copie Id
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => router.push(`/${params.storeId}/colors/${data.id}`)}>
                         <Edit className="mr-2 h-4 w-4" />
-                        Update
+                        Mettre à jour
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setOpen(true)}>
                         <Trash className="mr-2 h-4 w-4" />
-                        Delete
+                        Supprimé
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

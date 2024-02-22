@@ -17,22 +17,22 @@ export type OrderColumn = {
 export const columns: ColumnDef<OrderColumn>[] = [
   {
     accessorKey: "products",
-    header: "Products",
+    header: "Produits",
   },
   {
     accessorKey: "phone",
-    header: "Phone",
+    header: "Téléphone",
   },
   {
     accessorKey: "address",
-    header: "Address",
+    header: "Addresse",
   },
   {
     accessorKey: "totalPrice",
-    header: "Totel Price",
+    header: "Prix Total",
   },
   {
     accessorKey: "isPaid",
-    header: "Paid",
+    header: "Payé",
   },
 ]

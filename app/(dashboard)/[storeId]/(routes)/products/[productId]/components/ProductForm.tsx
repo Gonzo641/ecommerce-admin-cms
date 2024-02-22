@@ -55,10 +55,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const title = initialData ? "Edit product" : "Create product";
-    const description = initialData ? "Edit a product" : "Add a new product";
-    const toastMessage = initialData ? "Product updated." : "Product created.";
-    const action = initialData ? "Save changes" : "Create";
+    const title = initialData ? "Modifier la catégorie" : "Créer une catégorie";
+    const description = initialData ? "Modifier une catégorie" : "Ajouter une nouvelle catégorie";
+    const toastMessage = initialData ? "Catégorie mise à jour." : "Catégorie créée.";
+    const action = initialData ? "Sauvegarder les modifications" : "Créée";
 
 
     const form = useForm<ProductFormValues>({
@@ -90,7 +90,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             router.push(`/${params.storeId}/products`)
             toast.success(toastMessage)
         } catch (error) {
-            toast.error("Something went wrong.")
+            toast.error("Une erreur est survenue.")
         } finally {
             setLoading(false);
         }
@@ -102,9 +102,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
             router.refresh();
             router.push(`/${params.storeId}/products`);
-            toast.success("Product deleted.");
+            toast.success("Produit supprimé.");
         } catch (error) {
-            toast.error("Something went wrong.")
+            toast.error("Une erreur est survenue.")
         } finally {
             setLoading(false);
             setOpen(false);
@@ -165,11 +165,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel>Nom</FormLabel>
                                 <FormControl>
                                     <Input 
                                         disabled={loading}
-                                        placeholder="Product Name"
+                                        placeholder="Nom produit"
                                         {...field}
                                     />
                                 </FormControl>
@@ -182,7 +182,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         name="price"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Price</FormLabel>
+                                <FormLabel>Prix</FormLabel>
                                 <FormControl>
                                     <Input
                                         type="number" 
@@ -200,7 +200,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         name="categoryId"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Category</FormLabel>
+                                <FormLabel>Catégorie</FormLabel>
                                 <Select
                                     disabled={loading}
                                     onValueChange={field.onChange}
@@ -211,7 +211,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                         <SelectTrigger>
                                             <SelectValue 
                                                 defaultValue={field.value}
-                                                placeholder="Select a category"
+                                                placeholder="Choisir une catégorie"
                                             />
                                         </SelectTrigger>
                                     </FormControl>
@@ -235,7 +235,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         name="sizeId"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Size</FormLabel>
+                                <FormLabel>Taille</FormLabel>
                                 <Select
                                     disabled={loading}
                                     onValueChange={field.onChange}
@@ -246,7 +246,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                         <SelectTrigger>
                                             <SelectValue 
                                                 defaultValue={field.value}
-                                                placeholder="Select a size"
+                                                placeholder="Selectionné une taille"
                                             />
                                         </SelectTrigger>
                                     </FormControl>
@@ -270,7 +270,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         name="colorId"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Color</FormLabel>
+                                <FormLabel>Coleur</FormLabel>
                                 <Select
                                     disabled={loading}
                                     onValueChange={field.onChange}
@@ -281,7 +281,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                         <SelectTrigger>
                                             <SelectValue 
                                                 defaultValue={field.value}
-                                                placeholder="Select a color"
+                                                placeholder="Selectionné une couleur"
                                             />
                                         </SelectTrigger>
                                     </FormControl>
@@ -315,10 +315,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                 </FormControl>
                                 <div className="space-y-1 leading-none">
                                     <FormLabel>
-                                        Featured
+                                        En vedette
                                     </FormLabel>
                                     <FormDescription>
-                                        This product will appear on the home page
+                                        Ce produit apparaîtra sur la page d'accueil
                                     </FormDescription>
                                 </div>
                             </FormItem>
@@ -339,10 +339,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                 </FormControl>
                                 <div className="space-y-1 leading-none">
                                     <FormLabel>
-                                        Archived
+                                        Archivé
                                     </FormLabel>
                                     <FormDescription>
-                                        This product will not appear anywhere in the store.
+                                        Ce produit n'apparaîtra nulle part dans la boutique.
                                     </FormDescription>
                                 </div>
                             </FormItem>

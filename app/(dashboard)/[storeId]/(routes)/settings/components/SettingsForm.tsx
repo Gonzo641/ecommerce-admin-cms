@@ -52,9 +52,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
             setLoading(true);
             await axios.patch(`/api/stores/${params.storeId}`, data);
             router.refresh();
-            toast.success("Store updated.")
+            toast.success("Boutique mis à jour")
         } catch (error) {
-            toast.error("Something went wrong.")
+            toast.error("Une erreur est survenue.")
         } finally {
             setLoading(false);
         }
@@ -66,9 +66,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
             await axios.delete(`/api/stores/${params.storeId}`);
             router.refresh();
             router.push("/")
-            toast.success("Store deleted.")
+            toast.success("Boutique supprimée");
         } catch (error) {
-            toast.error("Make sure you removed all products and categories first.")
+            toast.error("Assurez-vous d'abord d'avoir supprimé tous les produits utilisant cette catégorie.")
         } finally {
             setLoading(false);
             setOpen(false);
@@ -85,8 +85,8 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
         />
         <div className="flex items-center justify-between">
             <Heading 
-                title="Settings"
-                description="Manage store preferences"
+                title="Paramètres"
+                description="Gérer les préférences de la boutique"
             />
             <Button
                 disabled={loading} 
@@ -109,11 +109,11 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel>Nom</FormLabel>
                                 <FormControl>
                                     <Input 
                                         disabled={loading}
-                                        placeholder="Store name"
+                                        placeholder="Nom boutique"
                                         {...field}
                                     />
                                 </FormControl>
@@ -127,7 +127,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                     className="ml-auto"
                     type="submit"
                 >
-                    Save changes
+                    Sauvegarder les modifications
                 </Button>
             </form>
         </Form>

@@ -22,7 +22,7 @@ import ImageUpload from "@/components/ui/image-upload";
 const formSchema = z.object({
     name: z.string().min(1),
     value: z.string().min(4).regex(/^#/, {
-        message: 'String value must be a valid hex code',
+        message: 'La valeur de la chaîne doit être un code hexadécimal valide',
     }),
 });
 
@@ -41,10 +41,10 @@ export const ColorForm: React.FC<ColorFormProps> = ({
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const title = initialData ? "Edit color" : "Create color";
-    const description = initialData ? "Edit a color" : "Add a new color";
-    const toastMessage = initialData ? "Color updated." : "Color created.";
-    const action = initialData ? "Save changes" : "Create";
+    const title = initialData ? "Modifier la catégorie" : "Créer une catégorie";
+    const description = initialData ? "Modifier une catégorie" : "Ajouter une nouvelle catégorie";
+    const toastMessage = initialData ? "Catégorie mise à jour." : "Catégorie créée.";
+    const action = initialData ? "Sauvegarder les modifications" : "Créée";
 
 
     const form = useForm<ColorFormValues>({
@@ -67,7 +67,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({
             router.push(`/${params.storeId}/colors`)
             toast.success(toastMessage)
         } catch (error) {
-            toast.error("Something went wrong.")
+            toast.error("Une erreur est survenue.")
         } finally {
             setLoading(false);
         }
@@ -79,9 +79,9 @@ export const ColorForm: React.FC<ColorFormProps> = ({
             await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
             router.refresh();
             router.push(`/${params.storeId}/colors`);
-            toast.success("Color deleted.");
+            toast.success("Couleur supprimée.");
         } catch (error) {
-            toast.error("Make sure you removed all products using this color first.")
+            toast.error("Assurez-vous d'abord d'avoir supprimé tous les produits utilisant cette catégorie.")
         } finally {
             setLoading(false);
             setOpen(false);
@@ -124,11 +124,11 @@ export const ColorForm: React.FC<ColorFormProps> = ({
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel>Nom</FormLabel>
                                 <FormControl>
                                     <Input 
                                         disabled={loading}
-                                        placeholder="Color name"
+                                        placeholder="Nom de la couleur"
                                         {...field}
                                     />
                                 </FormControl>
@@ -141,12 +141,12 @@ export const ColorForm: React.FC<ColorFormProps> = ({
                         name="value"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Value</FormLabel>
+                                <FormLabel>Valeur</FormLabel>
                                 <FormControl>
                                     <div className="flex items-center gap-x-4">
                                         <Input 
                                             disabled={loading}
-                                            placeholder="Color value"
+                                            placeholder="Valeur couleur"
                                             {...field}
                                         />
                                         <div 

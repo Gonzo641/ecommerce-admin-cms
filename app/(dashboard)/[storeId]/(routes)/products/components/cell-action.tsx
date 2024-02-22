@@ -34,7 +34,7 @@ export const CellAction: React.FC<CellActionProps> = ({
 
     const onCopy = (id: string) => {
         navigator.clipboard.writeText(id);
-        toast.success("Product Id copied to the clipboard.");
+        toast.success("Identifiant de catégorie copié dans le presse-papiers.");
     };
 
     const onDelete = async () => {
@@ -42,9 +42,9 @@ export const CellAction: React.FC<CellActionProps> = ({
             setLoading(true);
             await axios.delete(`/api/${params.storeId}/products/${data.id}`);
             router.refresh();
-            toast.success("Product deleted.")
+            toast.success("Catégorie supprimée")
         } catch (error) {
-            toast.error("Something went wrong.")
+            toast.error("Une erreur est survenue.")
         } finally {
             setLoading(false);
             setOpen(false);
@@ -72,15 +72,15 @@ export const CellAction: React.FC<CellActionProps> = ({
                     </DropdownMenuLabel>
                     <DropdownMenuItem onClick={() => onCopy(data.id)}>
                         <Copy className="mr-2 h-4 w-4" />
-                        Copy Id
+                        Copie Id
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => router.push(`/${params.storeId}/products/${data.id}`)}>
                         <Edit className="mr-2 h-4 w-4" />
-                        Update
+                        Mettre à jour
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setOpen(true)}>
                         <Trash className="mr-2 h-4 w-4" />
-                        Delete
+                        Supprimé
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
